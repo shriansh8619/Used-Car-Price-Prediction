@@ -45,7 +45,6 @@ input_data = {
     'Age': [age],
     'Kilometers_Driven': [km_driven],
     'QualityScore': [quality_score],
-    'Warranty': [warranty],
     'Model_Encoded': [model_encoded]
 }
 input_data.update(encoded_inputs)  # Add label-encoded inputs to the DataFrame

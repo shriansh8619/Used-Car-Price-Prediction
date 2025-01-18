@@ -22,7 +22,6 @@ st.sidebar.header("Enter Car Details")
 age = st.sidebar.number_input("Car Age (in years)", min_value=0, max_value=30, step=1, value=5)
 km_driven = st.sidebar.number_input("Kilometers Driven", min_value=0, step=1000, value=123000)
 quality_score = st.sidebar.number_input("Quality Score", min_value=0.0, max_value=10.0, step=0.1, value=5.0)
-warranty = st.sidebar.number_input("Warranty (in years)", min_value=0, max_value=2, step=1, value=1)
 
 # Input for car model with target encoding
 model_name = st.sidebar.selectbox("Car Model", list(target_encoding_map.keys()))
@@ -38,7 +37,7 @@ for col in categorical_columns:
 # Transform the categorical inputs using label encoders
 encoded_inputs = {}
 for col, value in categorical_inputs.items():
-    encoded_inputs[col] = label_encoders[col].transform([value])[0] + 1
+    encoded_inputs[col] = label_encoders[col].transform([value])[0]
 
 # Create input DataFrame for prediction
 input_data = {

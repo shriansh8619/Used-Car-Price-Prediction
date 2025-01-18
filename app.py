@@ -20,7 +20,7 @@ st.sidebar.header("Enter Car Details")
 
 # Input for numerical columns
 age = st.sidebar.number_input("Car Age (in years)", min_value=0, max_value=30, step=1, value=5)
-km_driven = st.sidebar.number_input("Kilometers Driven", min_value=0, step=1000, value=123000)
+kilometer = st.sidebar.number_input("Kilometers Driven", min_value=0, step=1000, value=123000)
 quality_score = st.sidebar.number_input("Quality Score", min_value=0.0, max_value=10.0, step=0.1, value=5.0)
 
 # Input for car model with target encoding
@@ -42,9 +42,9 @@ for col, value in categorical_inputs.items():
 # Create input DataFrame for prediction
 input_data = {
     'Age': [age],
-    'Kilometers_Driven': [km_driven],
+    'Kilometer': [kilometer],
     'QualityScore': [quality_score],
-    'Model_Encoded': [model_encoded]
+    'Model_encoded': [model_encoded]
 }
 input_data.update(encoded_inputs)  # Add label-encoded inputs to the DataFrame
 

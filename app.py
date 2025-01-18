@@ -7,7 +7,7 @@ import pickle
 model = pickle.load(open("build.pkl", 'rb'))
 
 # Load the target encoding map for the 'Model' column
-target_encoding_map = pickle.load(open("model_tareget_mean.pkl", 'rb'))
+target_encoding_map = pickle.load(open("model_target_mean.pkl", 'rb'))
 
 # Load the label encoders for categorical columns
 label_encoders = pickle.load(open("label_encoders.pkl", 'rb'))

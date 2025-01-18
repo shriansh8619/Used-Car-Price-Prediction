@@ -19,9 +19,9 @@ st.write("Predict the resale value of used cars based on their features.")
 st.sidebar.header("Enter Car Details")
 
 # Input for numerical columns
-age = st.sidebar.number_input("Car Age (in years)", min_value=0, max_value=30, step=1, value=5)
-kilometer = st.sidebar.number_input("Kilometers Driven", min_value=0, step=1000, value=123000)
-quality_score = st.sidebar.number_input("Quality Score", min_value=0.0, max_value=10.0, step=0.1, value=5.0)
+age = st.sidebar.number_input("Car Age (in years)", min_value=0, max_value=30, step=1, value=1)
+kilometer = st.sidebar.number_input("Kilometers Driven", min_value=0, step=1000, value=50000)
+quality_score = st.sidebar.number_input("Quality Score", min_value=0.0, max_value=10.0, step=0.1, value=7.0)
 
 # Input for car model with target encoding
 model_name = st.sidebar.selectbox("Car Model", list(target_encoding_map.keys()))

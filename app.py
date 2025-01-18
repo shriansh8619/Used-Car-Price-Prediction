@@ -1,7 +1,11 @@
 import streamlit as st
 import pandas as pd
 import pickle
-
+# Set page configuration
+st.set_page_config(
+    page_title="Used Car Price Prediction",  # This changes the browser tab name
+    page_icon="🚗"  # You can use emojis or a link to an icon
+)
 # Load the trained model
 model = pickle.load(open("build.pkl", 'rb'))
 

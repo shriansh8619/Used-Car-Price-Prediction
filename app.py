@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-
 # Load the trained model
 model = pickle.load(open("build.pkl", 'rb'))
 
@@ -19,18 +18,18 @@ st.write("Predict the resale value of used cars based on their features.")
 # Sidebar for user inputs
 st.sidebar.header("Enter Car Details")
 
-# Input for age
+# Input for numerical columns
 age = st.sidebar.number_input("Car Age (in years)", min_value=0, max_value=30, step=1, value=5)
-
-# Input for kilometers driven
 km_driven = st.sidebar.number_input("Kilometers Driven", min_value=0, step=1000, value=123000)
+quality_score = st.sidebar.number_input("Quality Score", min_value=0.0, max_value=10.0, step=0.1, value=5.0)
+warranty = st.sidebar.number_input("Warranty (in years)", min_value=0, max_value=2, step=1, value=1)
 
-# Input for car model
+# Input for car model with target encoding
 model_name = st.sidebar.selectbox("Car Model", list(target_encoding_map.keys()))
 model_encoded = target_encoding_map.get(model_name, 0)  # Map the model name using target encoding
 
-# Collecting inputs for other columns
-categorical_columns = ['Company', 'FuelType', 'Colour', 'BodyStyle', 'Owner', 'DealerState', 'Warranty']
+# Collecting inputs for categorical columns
+categorical_columns = ['Company', 'FuelType', 'Colour', 'BodyStyle', 'Owner', 'DealerState']
 categorical_inputs = {}
 for col in categorical_columns:
     options = label_encoders[col].classes_  # Get unique classes for the column
@@ -41,15 +40,13 @@ encoded_inputs = {}
 for col, value in categorical_inputs.items():
     encoded_inputs[col] = label_encoders[col].transform([value])[0] + 1
 
-# Input for QualityScore
-quality_score = st.sidebar.number_input("Quality Score", min_value=0.0, max_value=10.0, step=0.1, value=5.0)
-
 # Create input DataFrame for prediction
 input_data = {
     'Age': [age],
     'Kilometers_Driven': [km_driven],
-    'Model_Encoded': [model_encoded],
-    'QualityScore': [quality_score]
+    'QualityScore': [quality_score],
+    'Warranty': [warranty],
+    'Model_Encoded': [model_encoded]
 }
 input_data.update(encoded_inputs)  # Add label-encoded inputs to the DataFrame
 

@@ -39,14 +39,19 @@ encoded_inputs = {}
 for col, value in categorical_inputs.items():
     encoded_inputs[col] = label_encoders[col].transform([value])[0]
 
-# Create input DataFrame for prediction
+# Create input DataFrame for prediction in the specified column order
 input_data = {
-    'Age': [age],
+    'Company': [encoded_inputs['Company']],
+    'FuelType': [encoded_inputs['FuelType']],
+    'Colour': [encoded_inputs['Colour']],
     'Kilometer': [kilometer],
+    'BodyStyle': [encoded_inputs['BodyStyle']],
+    'Age': [age],
+    'Owner': [encoded_inputs['Owner']],
+    'DealerState': [encoded_inputs['DealerState']],
     'QualityScore': [quality_score],
     'Model_encoded': [model_encoded]
 }
-input_data.update(encoded_inputs)  # Add label-encoded inputs to the DataFrame
 
 input_df = pd.DataFrame(input_data)
 

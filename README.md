@@ -9,3 +9,4 @@ Data Insights: Identified trends such as the high demand for budget-friendly car
 Machine Learning Models: Implemented Decision Tree and Random Forest Regressors for price prediction, with Random Forest outperforming in accuracy.<br><br>
 Deployment: Built a user-friendly web app using Streamlit, enabling users to input car details and predict resale prices.<br><br>
 This project offers valuable insights for stakeholders like car dealers, buyers, and sellers to understand pricing dynamics in the used car market.<br><br>
+![Screenshot (94)](https://github.com/user-attachments/assets/facaa8c7-bf30-4db1-aa5e-ec0cf33b402f)
